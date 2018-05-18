@@ -1,0 +1,33 @@
+.panel-height{
+	height: 230px;
+	margin-top: 60px;
+	width: 700px;
+    margin-bottom: 60px;
+    margin-left: 200px;
+}
+
+.row-one{
+	margin-top: 35px;
+}
+
+.row-three{
+	margin-top: 10px;
+}
+
+.my-celsius{
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+	margin-top: 30px;
+	margin-left: 180px;
+    font-size: 22px;
+    color: green;
+}
+
+h5, #my-button{
+	font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+.err-msg{
+	font-size: 15px;
+	font-family: "Times New Roman", Times, serif;
+	color: red;
+}
