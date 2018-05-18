@@ -10,11 +10,10 @@ import { MyRemoteService } from '../app.myremoteservice';
 export class HomeComponent implements OnInit {
 
   Operand1: string;
-  result: string[];
   remoteService: MyRemoteService;
   names: Array<any>;
   resultCelsius: String;
-  resultFarenhite: String;
+  resultFahrenheit: String;
 
   // Since using a provider above we can receive service.
   constructor(_remoteService: MyRemoteService) {
@@ -24,6 +23,26 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+    convertToC(fahrenheit) {
+        this.remoteService.getCelsius(fahrenheit)
+            // Subscribe to observable.
+            .subscribe(
+                // Success.
+                data => { 
+                    this.names = data
+                    let celsius = data['Celsius'];
+                    this.resultFahrenheit = fahrenheit + " Degrees Fahrenheit is " + celsius + " Degrees Celsius.";
+                    let y = 0;
+                },
+                // Error.
+                error => {
+                    alert(error)
+                },
+                // Final Instructions.
+                () => {
+                    console.log("Finished")
+                });
+    }
  
     convertToF(celsius) {
         this.remoteService.getFahrenheit(celsius)
@@ -32,8 +51,8 @@ export class HomeComponent implements OnInit {
                 // Success.
                 data => { 
                     this.names = data
-                    let farenhite = data['Fahrenheit'];
-                    this.resultCelsius = celsius + " Degrees Celsius is " + farenhite + " Degrees Farenhite.";
+                    let fahrenheit = data['Fahrenheit'];
+                    this.resultCelsius = celsius + " Degrees Celsius is " + fahrenheit + " Degrees Fahrenheit.";
                     let y = 0;
                 },
                 // Error.
