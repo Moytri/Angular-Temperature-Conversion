@@ -1,0 +1,41 @@
+<div class="home-container">
+	<div class="panel panel-default panel-height">
+		<form  #myForm="ngForm">
+			<li class="err-msg" [hidden]="firstNumber.valid || firstNumber.pristine">This control is invalid.</li>
+	        <li class="err-msg" *ngIf="firstNumber?.errors?.pattern"> Only Numeric Values are allowed.</li>
+			<div class="row row-one">
+				<div class="col-md-1">
+				</div>	
+				<div class="col-md-4">
+					<h5>Convert Celsius to Farenhite </h5>
+				</div>
+				<div class="col-md-4">
+					<input type="text" pattern="^[0-9]*$"  [(ngModel)]="Operand1" class="user-input" name="Operand1" #firstNumber="ngModel">
+				</div>
+				<div class="col-md-3">
+					<button (click)="convertToF(Operand1)" id="my-button">Get Fahrenheit</button><br/>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-md-12"> 
+					<span class="my-celsius">{{resultCelsius}}</span>
+				</div>	
+			</div>
+			<br>
+			<div class="row row-three">
+				<div class="col-md-1">
+				</div>	
+				<div class="col-md-4">
+					<h5>Convert Farenhite to Celsius</h5>
+				</div>
+				<div class="col-md-4">
+					<input type="text" pattern="^[0-9]*$"  [(ngModel)]="Operand2" class="user-input" name="Operand2" #secondNumber="ngModel">
+				</div>
+				<div class="col-md-3">
+					 <button (click)="convertToC()" id="my-button">Get Celsius</button><br/>
+				</div>	
+			</div>
+		</form>
+	</div>	
+</div>	
+
