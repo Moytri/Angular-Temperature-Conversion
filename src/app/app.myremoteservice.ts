@@ -18,11 +18,9 @@ export class MyRemoteService {
        this.site = "http://ssdsandbox.com/angular2/"
     }
 
+    // GET temperature in Fahrenheit.
     getFahrenheit(celsius): Observable<string[]> {
         let content = new URLSearchParams();
-
-        /**Convert celsius to farenhite**/
-        let fahrenheit = (celsius * (9/5)) + 32;
 
         content.set('c',  celsius);
         let headers = new Headers({ 
@@ -38,18 +36,36 @@ export class MyRemoteService {
 
     }
 
+      // GET temperature in Celsius.
+    getCelsius(fahrenheit): Observable<string[]> { 
+        let content = new URLSearchParams();
+
+        content.set('f',  fahrenheit);
+
+        let headers = new Headers({ 
+        'Content-Type': 'application/x-www-form-urlencoded' }); 
+        let options = new RequestOptions({
+          search: content 
+        });
+
+        let dataUrl = this.site + 'api/Celsius';  
+        return this.http.get(dataUrl, options)
+            .pipe(map(this.extractData))
+            .pipe(catchError(this.handleError));
+    }
+
 
     postName(_feedback: Object): Observable<Comment[]> {
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' }); 
         let options = new RequestOptions({ headers: headers });
-        let url     = this.site + '/feedback';
+        let url     = this.site + 'api/Feedback';
 
         let params: URLSearchParams = new URLSearchParams();
 
         let content = new URLSearchParams();
         content.set('Email',  _feedback["Email"]);
         content.set('Message', _feedback["Message"]);  
-        alert(url + " content.toString() " + content.toString())
+        
         return this.http.post(url, content.toString(), options)
             .pipe(map(this.extractData))
             .pipe(catchError(this.handleError));
