@@ -20,15 +20,15 @@ export class FeedbackComponent implements OnInit {
     constructor(_remoteService: MyRemoteService) {
         this.remoteService = _remoteService;
         this.emailAddress = "sample_email@gmail.com";
-        this.feedbackMsg = "Please compose your message."
+        this.feedbackMsg = "Please compose your message by deleting this line."
     }
 
 	  ngOnInit() {
 	  }
 
     postFeedback() {  
-        // Create the JavaScript object in the format
-        // required by the server.
+
+        //EMAIL_REGEXP is taken from stackoverflow
 
         let EMAIL_REGEXP = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -47,9 +47,10 @@ export class FeedbackComponent implements OnInit {
             "Message": this.feedbackMsg
         }
 
-        this.remoteService.postName(FeedBackObject) 
+        this.remoteService.postName(FeedBackObject)
             // Subscribe to observable.
             .subscribe(
+
             // Success.
             data => {
                 this.feedbackResponseMsg    = data["Message"];
@@ -66,7 +67,7 @@ export class FeedbackComponent implements OnInit {
             });
 
         	this.emailAddress = "sample_email@gmail.com";
-        	this.feedbackMsg = "Please compose your message."
+        	this.feedbackMsg = "Please compose your message by deleting this line."
     }
 
 }
