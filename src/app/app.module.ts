@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { FormsModule }   from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { FooterComponent } from './footer/footer.component';
 
 import { routing }   from './app.routing';
 
@@ -12,7 +13,8 @@ import { routing }   from './app.routing';
   declarations: [
     AppComponent,
     HomeComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule, routing
