@@ -10,7 +10,7 @@ import {  MyRemoteService } from './app.myremoteservice';
 })
 
 export class AppComponent {
-   title = "App";
+   title = "Converter & Feedback";
 
    
 }
