@@ -1,0 +1,33 @@
+.feedback-container{
+	width: 860px;
+    margin-bottom: 60px;
+    margin-left: 120px;
+}
+
+.panel-height{
+	height: 360px;
+	margin-top: 30px;
+}
+
+#email, #my-text{
+	margin-left: 200px;
+	width: 500px;
+}
+
+#my-label{
+	margin-left: 200px;
+}
+
+.email-label{
+	 margin-top: 30px;
+}
+
+.btn{
+	margin-left: 200px;
+}
+
+.err-msg{
+	font-size: 15px;
+	font-family: "Times New Roman", Times, serif;
+	color: red;
+}
