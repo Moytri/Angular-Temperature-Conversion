@@ -9,7 +9,6 @@ import { MyRemoteService } from '../app.myremoteservice';
 })
 export class HomeComponent implements OnInit {
 
-  Operand1: string;
   remoteService: MyRemoteService;
   names: Array<any>;
   resultCelsius: String;
@@ -31,7 +30,7 @@ export class HomeComponent implements OnInit {
                 data => { 
                     this.names = data
                     let celsius = data['Celsius'];
-                    this.resultFahrenheit = fahrenheit + " Degrees Fahrenheit is " + celsius + " Degrees Celsius.";
+                    this.resultFahrenheit = fahrenheit + " Degrees Fahrenheit is " + Number(celsius).toFixed(2)+ " Degrees Celsius.";
                     let y = 0;
                 },
                 // Error.
@@ -52,7 +51,7 @@ export class HomeComponent implements OnInit {
                 data => { 
                     this.names = data
                     let fahrenheit = data['Fahrenheit'];
-                    this.resultCelsius = celsius + " Degrees Celsius is " + fahrenheit + " Degrees Fahrenheit.";
+                    this.resultCelsius = celsius + " Degrees Celsius is " + Number(fahrenheit).toFixed(2) + " Degrees Fahrenheit.";
                     let y = 0;
                 },
                 // Error.
