@@ -10,6 +10,7 @@ import { MyRemoteService } from '../app.myremoteservice';
 
 export class FeedbackComponent implements OnInit {
 
+    showDiv = true;
     emailAddress: string;
     feedbackMsg: string;
     feedbackResponseMsg: string;
@@ -19,12 +20,12 @@ export class FeedbackComponent implements OnInit {
     // Since using a provider above we can receive service.
     constructor(_remoteService: MyRemoteService) {
         this.remoteService = _remoteService;
-        this.emailAddress = "sample_email@gmail.com";
-        this.feedbackMsg = "Please compose your message by deleting this line."
     }
 
-	  ngOnInit() {
-	  }
+    ngOnInit(){
+
+    }
+
 
     postFeedback() {  
 
@@ -37,9 +38,11 @@ export class FeedbackComponent implements OnInit {
 
 	    if (mail != "" &&  !EMAIL_REGEXP.test(mail)) {
 	        alert("Please enter valid email address.");
+            return;
 	    }
-	    if (msg == "") {
-	        alert("Your message is not meaningful.");
+	    if (msg == "" || msg == "Please compose your message by deleting this line.") {
+	        alert("Feedback message is required. Please enter your own word.");
+            return;
 	    }
 
         let FeedBackObject = {
@@ -55,7 +58,17 @@ export class FeedbackComponent implements OnInit {
             data => {
                 this.feedbackResponseMsg    = data["Message"];
                 this.feedbackResponseStatus = data["Status"];
-                console.log(data)
+                console.log(this.feedbackResponseStatus)
+                console.log(data["Status"])
+                if(this.feedbackResponseStatus === "Success!" ){
+                    this.emailAddress = "";
+                    this.feedbackMsg = "";
+                    this.showDiv = !this.showDiv;
+                }
+                else{
+                     this.showDiv = true;
+                }
+                
             },
             // Error.
             error => {
@@ -66,8 +79,8 @@ export class FeedbackComponent implements OnInit {
                 console.log("Finished")
             });
 
-        	this.emailAddress = "sample_email@gmail.com";
-        	this.feedbackMsg = "Please compose your message by deleting this line."
+          
+        	
     }
 
 }
