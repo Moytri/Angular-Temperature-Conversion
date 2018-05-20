@@ -1,5 +1,5 @@
 .panel-height{
-	height: 230px;
+	height: 250px;
 	margin-top: 60px;
 	width: 700px;
     margin-bottom: 60px;
@@ -31,6 +31,10 @@ h5, #my-button{
 	font-size: 15px;
 	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 	color: red;
-	margin-left: 80px;
-	margin-top: 5px;
+	margin-left: 10px;
+	margin-top: 6px;
+}
+
+.alert-danger{
+	margin-left: 220px;
 }
