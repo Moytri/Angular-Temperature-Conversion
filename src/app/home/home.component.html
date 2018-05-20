@@ -2,16 +2,11 @@
 	<div class="panel panel-default panel-height">
 		<form  #myForm="ngForm">
 			<div class="row">
-				<div class="col-md-6">
-					<li class="err-msg" [hidden]="firstNumber.valid || firstNumber.pristine">This control is invalid.</li>
-			        <li class="err-msg" *ngIf="firstNumber?.errors?.pattern">Enter numeric value as Celsius.</li>
-			    </div>
-			    <div class="col-md-6">
-			        <li class="err-msg" [hidden]="secondNumber.valid || secondNumber.pristine">
-			        This control is invalid.</li>
-			        <li class="err-msg" *ngIf="secondNumber?.errors?.pattern">Enter numeric value as Fahrenheit.</li>
-			    </div>    
-	        </div>
+				<div class="col-md-9">
+			        <div class="alert-danger" *ngIf="firstNumber?.errors?.pattern"><li class="err-msg"> Enter numeric value as Celsius.</li></div>
+			        <div class="alert-danger" *ngIf="secondNumber?.errors?.pattern"><li class="err-msg"> Enter numeric value as Fahrenheit.</li></div>
+			    </div> 
+			</div>   
 			<div class="row row-one">
 				<div class="col-md-1">
 				</div>	
@@ -22,7 +17,7 @@
 					<input type="text" pattern="^[0-9]*$"  [(ngModel)]="Operand1" class="user-input" name="Operand1" #firstNumber="ngModel">
 				</div>
 				<div class="col-md-3">
-					<button (click)="convertToF(Operand1)" id="my-button">Get Fahrenheit</button><br/>
+					<button (click)="convertToF(Operand1)" id="my-button" [disabled]='!myForm.form.valid || Operand1 == null || Operand1 == "" '>Get Fahrenheit</button><br/>
 				</div>
 			</div>	
 			<div class="row">
@@ -41,7 +36,7 @@
 					<input type="text" pattern="^[0-9]*$"  [(ngModel)]="Operand2" class="user-input" name="Operand2" #secondNumber="ngModel">
 				</div>
 				<div class="col-md-3">
-					 <button (click)="convertToC(Operand2)" id="my-button">Get Celsius</button><br/>
+					 <button (click)="convertToC(Operand2)" id="my-button" [disabled]='!myForm.form.valid || Operand2 == null || Operand2 == "" '>Get Celsius</button><br/>
 				</div>	
 			</div>
 			<div class="row">
