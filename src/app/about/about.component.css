@@ -1,0 +1,15 @@
+.alert-success{
+	height: 215px;
+	width: 860px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-left: 120px;
+}
+
+strong{
+		font-family: Georgia, Times, "Times New Roman", serif;
+}
+
+h5{
+		font-family: Georgia, Times, "Times New Roman", serif;
+}
